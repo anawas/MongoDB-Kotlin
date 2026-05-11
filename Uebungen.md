@@ -1,5 +1,11 @@
 ## Übungen (MongoDB)
 
+### Vorbereitung
+Die folgende Übung zeigt die Umsetzung des SmartHomes mit MongoDB. Anstelle von Tabellen
+nutzen wir JSON-Dokumente. Damit wir Daten zum Ausprobieren haben, füllen wir die
+Datenbank mithilfe des Kotlin-Programms. Folge dazu den Anweisung in der Datei _README.md_,
+bevor Du dich an diese Übungen machst.
+
 ### In MongoDB einloggen
 
 Wenn Du MongoDB noch nie auf Deinem Rechner hattest, kannst Du Dich via Container einloggen:
@@ -17,9 +23,21 @@ mongosh "mongodb://root:rootpassword@localhost:27017"
 
 Tipp: Vor den Aufgaben sicherstellen, dass die App läuft und Daten erzeugt.
 
-### Aufgabe 1: Events abfragen
+### Aufgabe 1: Collections anzeigen
+Eine _Collection_ ist in MongoDB eine Sammlung von JSON-Dokumenten. Damit entspricht sie
+in etwas einer Tabelle in SQL-Datenbanken. Mit der Ausnahme, dass die Dokumente keine
+starre Form besitzen. Schlüssel können vorhanden sein oder auch nicht. Genauso können
+die Werte beliebigen Inhalt haben.
 
-1. In die DB wechseln: `use smarthome`
+Schauen wir nach, welche Collections die Kotlin-App angeleggt hat:
+
+```javascript
+use smarthome
+show collections;
+```
+
+### Aufgabe 2: Events abfragen
+
 2. Die letzten 20 Events anzeigen (neueste zuerst).
 
 Hinweis: Sortieren geht über `_id` (ObjectId enthält Zeitanteil).
@@ -31,7 +49,7 @@ use smarthome
 db.events.find().sort({ _id: -1 }).limit(20)
 ```
 
-### Aufgabe 2: Events zu einer bestimmten `buildingId`
+### Aufgabe 3: Events zu einer bestimmten `buildingId`
 
 1. Alle Events für z.B. `haus-2` anzeigen.
 2. Nur die Felder `buildingId`, `eventName`, `timestamp`, `data` anzeigen (ohne `_id`).
@@ -45,7 +63,7 @@ db.events
   .limit(50)
 ```
 
-### Aufgabe 3: Bestimmte Eventtypen zählen
+### Aufgabe 4: Bestimmte Eventtypen zählen
 
 3a) Gesamtzahl eines Eventtyps (z.B. `doorOpened`) zählen.
 
@@ -78,7 +96,7 @@ db.events.aggregate([
 ])
 ```
 
-### Aufgabe 4: Messwerte auswerten
+### Aufgabe 5: Messwerte auswerten
 4a) Die letzten 10 Messwerte von Haus "haus-1" abfragen:
 
 ```javascript
