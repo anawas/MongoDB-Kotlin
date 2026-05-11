@@ -33,7 +33,7 @@ Schauen wir nach, welche Collections die Kotlin-App angeleggt hat:
 
 ```javascript
 use smarthome
-show collections;
+show collections
 ```
 
 ### Aufgabe 2: Events abfragen
