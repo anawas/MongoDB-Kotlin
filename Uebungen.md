@@ -45,7 +45,6 @@ Hinweis: Sortieren geht über `_id` (ObjectId enthält Zeitanteil).
 Beispiel:
 
 ```javascript
-use smarthome
 db.events.find().sort({ _id: -1 }).limit(20)
 ```
 
